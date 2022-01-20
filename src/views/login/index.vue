@@ -2,8 +2,8 @@
  * @Author: chris
  * @Date: 2022-01-02 14:58:29
  * @LastEditors: chris
- * @LastEditTime: 2022-01-09 19:09:19
- * @FilePath: \admin-v1\src\views\login\index.vue
+ * @LastEditTime: 2022-01-14 15:49:01
+ * @FilePath: \Ordinary-demo\src\views\login\index.vue
  * @autoAdd: false
 -->
 <template>
@@ -40,6 +40,7 @@
 import { reactive, ref } from 'vue';
 import { validatePassword } from './rules';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 const loginForm = ref({
   username: '',
@@ -74,6 +75,7 @@ const onChangePwdType = () => {
 const loading = ref(false);
 const store = useStore();
 const loginFromRef = ref(null);
+const router = useRouter();
 const handleLogin = () => {
   loginFromRef.value.validate((vaild) => {
     if (!vaild) return;
@@ -81,8 +83,8 @@ const handleLogin = () => {
     store
       .dispatch('user/login', loginForm.value)
       .then(() => {
-        // 登录成功
         loading.value = false;
+        router.push('/');
       })
       .catch(() => {
         loading.value = false;

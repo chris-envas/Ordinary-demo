@@ -2,18 +2,18 @@
  * @Author: chris
  * @Date: 2022-01-02 14:18:41
  * @LastEditors: chris
- * @LastEditTime: 2022-01-02 15:33:52
- * @FilePath: \admin-v1\src\router\index.js
+ * @LastEditTime: 2022-01-09 22:04:03
+ * @FilePath: \Ordinary-demo\src\router\index.js
  * @autoAdd: false
  */
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import Layout from '@/layout';
 
 const publicRoutes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Layout',
+    component: Layout,
   },
   {
     path: '/about',

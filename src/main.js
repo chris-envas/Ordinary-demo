@@ -2,8 +2,8 @@
  * @Author: chris
  * @Date: 2022-01-02 14:18:41
  * @LastEditors: chris
- * @LastEditTime: 2022-01-06 15:28:11
- * @FilePath: \admin-v1\src\main.js
+ * @LastEditTime: 2022-01-09 23:54:24
+ * @FilePath: \Ordinary-demo\src\main.js
  * @autoAdd: false
  */
 import { createApp } from 'vue';
@@ -13,6 +13,7 @@ import store from './store';
 import installElementPlus from './plugins/element';
 import installAllIcons from '@/icons';
 import '@/styles/index.scss';
+import './permission';
 
 const app = createApp(App);
 installElementPlus(app);

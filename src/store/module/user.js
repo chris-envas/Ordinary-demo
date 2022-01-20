@@ -2,26 +2,31 @@
  * @Author: chris
  * @Date: 2022-01-06 11:29:51
  * @LastEditors: chris
- * @LastEditTime: 2022-01-09 19:13:18
- * @FilePath: \admin-v1\src\store\module\user.js
+ * @LastEditTime: 2022-01-14 15:30:33
+ * @FilePath: \Ordinary-demo\src\store\module\user.js
  * @autoAdd: false
  */
-import { login } from '@/api/sys';
-import { setItem } from '@/utils/storage';
+import { login, getUserInfo } from '@/api/sys';
+import { setItem, getItem } from '@/utils/storage';
 import { TOKEN } from '@/constant';
 import md5 from 'md5';
 
 export default {
   namespaced: true,
-  state: () => ({}),
+  state: () => ({
+    token: getItem(TOKEN) || '',
+    userInfo: {},
+  }),
   mutations: {
     setToken(state, token) {
       state.token = token;
       setItem(TOKEN, token);
     },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo;
+    },
   },
   actions: {
-    // 登录请求动作
     login(context, userInfo) {
       const { username, password } = userInfo;
       return new Promise((resolve, reject) => {
@@ -38,6 +43,11 @@ export default {
             reject(err);
           });
       });
+    },
+    async getUserInfo() {
+      const res = await getUserInfo();
+      this.commit('user/setUserInfo', res);
+      return res;
     },
   },
 };

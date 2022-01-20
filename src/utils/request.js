@@ -2,19 +2,32 @@
  * @Author: chris
  * @Date: 2022-01-05 18:17:03
  * @LastEditors: chris
- * @LastEditTime: 2022-01-09 19:16:05
- * @FilePath: \admin-v1\src\utils\request.js
+ * @LastEditTime: 2022-01-14 15:42:04
+ * @FilePath: \Ordinary-demo\src\utils\request.js
  * @autoAdd: false
  */
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+import store from '@/store';
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000,
 });
 
-// 响应拦截器
+service.interceptors.request.use(
+  (config) => {
+    config.headers.icode = '564FEB91B3104917';
+    if (store.getters.token) {
+      config.headers.Authorization = `Bearer ${store.getters.token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 service.interceptors.response.use(
   (response) => {
     const { success, message, data } = response.data;
