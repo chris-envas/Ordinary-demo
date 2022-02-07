@@ -1,11 +1,3 @@
-<!--
- * @Author: chris
- * @Date: 2022-01-09 22:03:55
- * @LastEditors: chris
- * @LastEditTime: 2022-01-20 16:26:14
- * @FilePath: \Ordinary-demo\src\layout\index.vue
- * @autoAdd: false
--->
 <template>
   <div class="app-wrapper">
     <!-- left -->

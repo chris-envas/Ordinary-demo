@@ -1,22 +1,17 @@
-/*
- * @Author: chris
- * @Date: 2022-01-09 23:31:47
- * @LastEditors: chris
- * @LastEditTime: 2022-01-14 15:39:47
- * @FilePath: \Ordinary-demo\src\permission.js
- * @autoAdd: false
- */
 import router from '@/router';
 import store from './store';
 
 // while list
 const whileList = ['/login'];
 
+// router hook
 router.beforeEach(async (to, from, next) => {
+  // 用户是否存在token
   if (store.getters.token) {
     if (to.path === '/login') {
       next('/');
     } else {
+      // 检查用户信息是否存在，不存在则请求
       if (!store.getters.hasUserInfo) {
         await store.dispatch('user/getUserInfo');
       }

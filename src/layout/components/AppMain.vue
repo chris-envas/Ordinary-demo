@@ -1,11 +1,3 @@
-<!--
- * @Author: chris
- * @Date: 2022-01-10 11:16:39
- * @LastEditors: chris
- * @LastEditTime: 2022-01-20 15:47:58
- * @FilePath: \Ordinary-demo\src\layout\components\AppMain.vue
- * @autoAdd: false
--->
 <template>
   <div class="app-main">
     main
